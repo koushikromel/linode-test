@@ -9,7 +9,7 @@ app = FastAPI()
 @app.on_event("startup")
 def startup_db_client():
     app.mongodb_client = MongoClient(
-        "mongodb+srv://onwords:onwords8182@cluster0.ibaw2uh.mongodb.net/?retryWrites=true&w=majority&ssl=true",
+        "mongodb+srv://onwords:onwords8182@cluster0.ibaw2uh.mongodb.net/?retryWrites=true&w=majority",
         serverSelectionTimeoutMS=5000,
     )
     app.database = app.mongodb_client["db1"]
