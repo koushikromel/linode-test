@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from pymongo import MongoClient
 from routes import *
-
+import certifi
 
 app = FastAPI()
 # app.mongodb_client = MongoClient("localhost", 27017)
@@ -10,7 +10,7 @@ app = FastAPI()
 def startup_db_client():
     app.mongodb_client = MongoClient(
         "mongodb+srv://onwords:onwords8182@cluster0.ibaw2uh.mongodb.net/?retryWrites=true&w=majority",
-        serverSelectionTimeoutMS=5000,
+        tlsCAFile=certifi.where(),
     )
     app.database = app.mongodb_client["db1"]
 
